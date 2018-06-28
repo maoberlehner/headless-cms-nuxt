@@ -1,24 +1,27 @@
-# Building Landing Pages with Vue.js and a Headless CMS
+# headless-cms-nuxt
 
 [![Patreon](https://img.shields.io/badge/patreon-donate-blue.svg)](https://www.patreon.com/maoberlehner)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/maoberlehner)
 
-This is an example project for the following article: [Building Landing Pages with Vue.js and a Headless CMS](https://markus.oberlehner.net/blog/building-landing-pages-with-vue-and-a-headless-cms/)
+This is an example project for exploring how to build headless CMS powered websites with Nuxt.js. One of the main goals of this project is to generate very fast loading pages, this is achieved by pre-rendering.
 
 ## Build Setup
 
 ```bash
 # Install dependencies.
-npm install
+yarn
 
 # Serve with hot reload.
-npm run serve
+yarn dev
 
 # Build for production with minification.
-npm run build
+yarn build
 
-# Serve the production build.
-npm run serve-production
+# Serve SSR production build.
+yarn start
+
+# Generate static pre-rendered build.
+yarn generate
 ```
 
 ## About
