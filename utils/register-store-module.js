@@ -1,7 +1,7 @@
-export default function registerStoreModule({ module, moduleName, store }) {
+export default function registerStoreModule({ module, name, store }) {
   // eslint-disable-next-line no-underscore-dangle
-  const moduleIsRegistered = store._modules.root._children[moduleName] !== undefined;
-  const stateExists = store.state[moduleName] !== undefined;
+  const moduleIsRegistered = store._modules.root._children[name] !== undefined;
+  const stateExists = store.state[name] !== undefined;
 
-  if (!moduleIsRegistered) store.registerModule(moduleName, module, { preserveState: stateExists });
+  if (!moduleIsRegistered) store.registerModule(name, module, { preserveState: stateExists });
 }

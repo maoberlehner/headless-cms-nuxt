@@ -25,20 +25,29 @@ import { mapState } from 'vuex';
 
 import { GET_LANDING_PAGE } from '../store/action-types';
 import { HOME } from '../models/landing-page';
+import fetch from '../components/mixins/fetch';
 import landingPage from '../store/modules/landing-page';
-import registerStoreModule from '../utils/register-store-module';
 
 import AppContentBlock from '../components/app/AppContentBlock.vue';
 import AppTeaser from '../components/app/AppTeaser.vue';
 
-const STORE_NAMESPACE = `landingPage/home`;
+const STORE_NAMESPACE = `${landingPage.name}/home`;
 
 export default {
   name: `Home`,
+  meta: {
+    fetch: {
+      module: landingPage,
+      mutation: GET_LANDING_PAGE,
+      name: STORE_NAMESPACE,
+      pageId: HOME,
+    },
+  },
   components: {
     AppContentBlock,
     AppTeaser,
   },
+  mixins: [fetch],
   computed: {
     ...mapState(STORE_NAMESPACE, [
       `contentBlocks`,
@@ -46,24 +55,6 @@ export default {
       `teasers`,
       `title`,
     ]),
-  },
-  beforeCreate() {
-    registerStoreModule({
-      module: landingPage,
-      moduleName: STORE_NAMESPACE,
-      store: this.$store,
-    });
-  },
-  async fetch({ store }) {
-    registerStoreModule({
-      module: landingPage,
-      moduleName: STORE_NAMESPACE,
-      store,
-    });
-
-    if (store.state[STORE_NAMESPACE].id) return;
-
-    await store.dispatch(`${STORE_NAMESPACE}/${GET_LANDING_PAGE}`, HOME);
   },
 };
 </script>

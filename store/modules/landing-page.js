@@ -3,6 +3,7 @@ import { SET_LANDING_PAGE } from '../mutation-types';
 import landingPageModel, { LandingPage } from '../../models/landing-page';
 
 export default {
+  name: `landingPage`,
   namespaced: true,
   actions: {
     async [GET_LANDING_PAGE]({ commit }, id) {
