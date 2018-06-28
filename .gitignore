@@ -28,3 +28,6 @@ Thumbs.db
 .nuxt
 dist
 node_modules
+
+# Files to ignore
+.env
